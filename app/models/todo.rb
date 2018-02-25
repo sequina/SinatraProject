@@ -1,4 +1,4 @@
-class TodoController < ActiveRecord::Base
+class Todo < ActiveRecord::Base
 belongs_to :users
 
 end

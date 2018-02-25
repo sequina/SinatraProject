@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect to '/todos'
+      redirect to '/todo'
     end
   end
 
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     if @user != nil && @user.password == params[:password]
       session[:user_id] = @user.id
-      redirect to 'todos/create_todo'
+      redirect to '/todo'
     end
    erb :error
   end
