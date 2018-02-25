@@ -1,7 +1,15 @@
 <h1>Login to ToDo App!</h1>
-<form method="post" action="/login">
-  <input type="text" name="username" placeholder="Username:">
-  <input type="text" name="password" placeholder="Password:">
 
-  <input type="submit" value="submit">
+<form action="/login" method="POST">
+  <div class="form-group">
+    <label for="username">Name: </label>
+    <input type="text" placeholder="John Doe">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Password: </label>
+    <input type="password" name="password" placeholder="******">
+
+  </div>
+  <input class="btn btn-primary" type="submit">
 </form>

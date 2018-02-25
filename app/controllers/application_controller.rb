@@ -15,10 +15,6 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  get '/signup' do
-    erb :'users/create_user'
-  end
-
   helpers do
     def logged_in?
       !!current_user
@@ -28,17 +24,6 @@ class ApplicationController < Sinatra::Base
       @current_user
     end
   end
-
-
-  # post '/login' do
-  #   @user = User.find_by(:username => params[:username])
-  #
-  #   if @user != nil && @user.password == params[:password]
-  #     session[:user_id] = @user.id
-  #     redirect to 'users/login'
-  #   end
-  #  erb :error
-  # end
   #
   # get '/logout' do
   #   session.clear
