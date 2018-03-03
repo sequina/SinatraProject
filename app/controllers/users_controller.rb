@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     erb :'users/create_user'
   end
 
-  # after signing up user is automatically logged in
+  # after signing up user is automatically logged in and redirected to todo list
     post '/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/signup'
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect to '/todo'
+      redirect to '/todo_list'
     end
   end
 
@@ -25,9 +25,18 @@ class UsersController < ApplicationController
 
     if @user != nil && @user.password == params[:password]
       session[:user_id] = @user.id
-      redirect to '/todo'
+      redirect to '/todo_list'
     end
    erb :error
+  end
+
+  get '/todo_list' do
+    @current_user = User.find_by_id(session[:user_id])
+    if @current_user
+      erb :"/todos/todo_list"
+    else
+      erb :login
+    end
   end
 
 

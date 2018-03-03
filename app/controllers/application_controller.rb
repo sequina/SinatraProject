@@ -15,19 +15,13 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  helpers do
-    def logged_in?
-      !!current_user
-    end
-
-    def current_user
-      @current_user
-    end
+  get '/todo_list' do
+    erb :"/todos/todo_list"
   end
-  #
-  # get '/logout' do
-  #   session.clear
-  #   redirect '/'
-  # end
+  
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
 
 end

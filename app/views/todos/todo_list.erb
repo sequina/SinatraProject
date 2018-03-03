@@ -1,4 +1,4 @@
-<h1>Welcome <%= current_user.username %> </h1>
+<h1>Welcome <%= current_user(session).username %> </h1>
 <p> Your ToDo List </p>
 
   <% @todo.each do |todo| %>
