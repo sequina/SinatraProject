@@ -16,12 +16,16 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/todo_list' do
-    erb :"/todos/todo_list"
+    erb :'/todos/todo_list'
   end
-  
+
   get '/logout' do
     session.clear
     redirect '/'
+  end
+
+  get '/create' do
+    erb :'/todos/create_todo'
   end
 
 end
