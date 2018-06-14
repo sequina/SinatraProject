@@ -1,14 +1,16 @@
 
 <p> Your ToDo List </p>
 
-<p><%= @todo.name %></p>
-
-<p><%= @todo.content %></p>
-
-  <form method="post" action="/todos/<%=@todo.id%>/delete">
+<form method="post" action="/todo/<%=@todo.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
+
+  <p><%= @todo.title %></p>
+
+  <p><%= @todo.content %></p>
 
 
     <input type="submit" value="delete">
   <!-- <button type="submit" value="delete">submit</button> -->
 </form>
+
+<a href="/tweet/<%=@todo.id%>/edit">Edit Todo </a>

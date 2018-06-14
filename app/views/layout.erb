@@ -7,11 +7,11 @@
   </head>
   <body>
     <nav>
-      <% if Helpers.logged_in?(session) %>
-      <p>Welcome, <%=Helpers.current_user(session).username %></p>
+      <% if logged_in? %>
 
-        <a href="/todos/create"> Create Something ToDo </a>
+        <a href="/todos/new"> Create Something ToDo </a>
         <a href="/logout"> Log Out </a>
+        <p>Welcome, <%=current_user.username %></p>
 
       <% else %>
         <a href="/signup">Sign Up</a>
@@ -20,7 +20,7 @@
 
     </nav>
     <div class="container">
-
+        <h1>ToDo</h1>
       <%= yield %>
 
     </div>

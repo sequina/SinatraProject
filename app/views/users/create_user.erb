@@ -1,6 +1,12 @@
 <h3>Sign Up Below</h3>
+<h2>Users</h2>
 
-<form action="/todos" method="POST">
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
+
+<form action="/signup" method="POST">
   <div class="form-group">
     <label for="username">Name: </label>
     <input type="text" placeholder="John Doe">
