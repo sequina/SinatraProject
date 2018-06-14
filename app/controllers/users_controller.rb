@@ -1,43 +1,36 @@
+require_relative '../../config/environment'
 class UsersController < ApplicationController
 
-  get '/signup' do
-    erb :'users/create_user'
-  end
+   get '/todos' do
+     erb :'/todos/create'
+   end
 
-  # after signing up user is automatically logged in and redirected to todo list
-    post '/signup' do
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
-      redirect to '/signup'
-    else
-      @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
-      @user.save
-      session[:user_id] = @user.id
-      redirect to '/create'
-    end
-  end
+   get '/todos/:id' do
+     erb :'/todos/list'
+   end
 
-  get '/login' do
-    erb :'users/login'
-  end
+   get 'todos/new' do
+     erb :'todos/new'
+   end
 
-  post '/login' do
-    @user = User.find_by(:username => params[:username])
+   post '/todos' do
+     @todo = Todo.create(params)
+     redirect to '/todos/new'
+   end
 
-    if @user != nil && @user.password == params[:password]
-      session[:user_id] = @user.id
-      redirect to :'todos/create_todo'
-    end
-   erb :error
-  end
+   get '/todos/:id/edit' do
+     "this is to edit a todo"
+   end
 
-  get '/todo_list' do
-    @current_user = User.find_by_id(session[:user_id])
-    if @current_user
-      erb :'/todos/create_todo'
-    else
-      erb :login
-    end
-  end
+   patch '/todos/:id'
+     @todo = Todo.find_by_id(params[:id])
+     @todo.name = params[:name]
+     @todo.content = params[:content]
+     @todo.save
+     erb :'/todos/list'
+   end
 
-
+   delete '/todos/:id' do
+     "this should delete all the things!"
+   end
 end

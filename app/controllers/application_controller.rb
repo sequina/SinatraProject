@@ -15,17 +15,34 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  get '/todo_list' do
-    erb :'/todos/todo_list'
+  get '/signup' do
+    erb :'users/create_user'
   end
+
+  post '/signup' do
+  if params[:username] == "" || params[:email] == "" || params[:password] == ""
+    redirect to '/signup'
+  else
+    @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+    @user.save
+    session[:user_id] = @user.id
+    redirect to 'todos/create'
+  end
+end
+
+get '/login' do
+  @user = User.find_by(:username => params[:username])
+
+  if @user != nil && @user.password == params[:password]
+    session[:user_id] = @user.id
+    redirect to :'/todos'
+  end
+ erb :error
+end
 
   get '/logout' do
     session.clear
     redirect '/'
-  end
-
-  get '/create' do
-    erb :'/todos/create_todo'
   end
 
 end

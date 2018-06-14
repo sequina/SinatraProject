@@ -1,8 +1,0 @@
-<h1>Welcome <%= current_user(session).username %> </h1>
-<p> Your ToDo List </p>
-
-  <% @todo.each do |todo| %>
-    <div>
-      <%= todo.content %>
-    </div>
-  <% end %>
