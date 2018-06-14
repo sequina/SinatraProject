@@ -22,7 +22,7 @@ class UsersController < ApplicationController
      "this is to edit a todo"
    end
 
-   patch '/todos/:id'
+   patch '/todos/:id' do
      @todo = Todo.find_by_id(params[:id])
      @todo.name = params[:name]
      @todo.content = params[:content]
