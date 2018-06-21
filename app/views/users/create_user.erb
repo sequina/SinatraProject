@@ -8,19 +8,26 @@
 
 <form action="/signup" method="POST">
   <div class="form-group">
-    <label for="username">Name: </label>
-    <input type="text" placeholder="John Doe">
+
+    <div class="form-group">
+      <label for="name">Name: </label>
+      <input type="text" placeholder="John Doe">
+    </div>
+
+    <div>
+    <label for="username">Username: </label>
+    <input type="text" placeholder="JDoe01">
   </div>
 
   <div class="form-group">
     <label for="email">Email: </label>
     <input type="text" name="email" placeholder="example@123.com">
+  </div>
 
     <div class="form-group">
-      <label for="email">Password: </label>
+      <label for="password">Password: </label>
       <input type="password" name="password">
 
     </div>
-  </div>
   <input class="btn btn-primary" type="submit">
 </form>

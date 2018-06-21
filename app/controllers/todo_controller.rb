@@ -1,22 +1,28 @@
 require_relative '../../config/environment'
 class TodoController < ApplicationController
 
+  get '/todos/new' do
+    erb :'todos/new'
+  end
+
+  post '/todos' do
+    @todo = Todo.create(params)
+    redirect to '/todos/create'
+  end
+
    get '/todos' do
-     erb :'/todos/create'
+     binding.pry
+     if logged_in?
+      @todo = Todo.all
+      erb :'todos/list'
+    else
+      redirect to '/login'
+    end
    end
 
    get '/todos/:id' do
      @todo = Todo.find_by_id(params[:id])
      erb :'/todos/list'
-   end
-
-   get 'todos/new' do
-     erb :'todos/new'
-   end
-
-   post '/todos' do
-     @todo = Todo.create(params)
-     redirect to '/todos/new'
    end
 
    get '/todos/:id/edit' do
