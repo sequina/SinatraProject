@@ -1,0 +1,6 @@
+<p> Here are your ToDos Listed Below!
+<% current_user.todos.each do |todo| %>
+  <div>
+    <%= todo.content %>
+  </div>
+<% end %>

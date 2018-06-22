@@ -11,10 +11,10 @@ class TodoController < ApplicationController
   end
 
    get '/todos' do
-     binding.pry
      if logged_in?
       @todo = Todo.all
-      erb :'todos/list'
+
+      erb :'todos/create'
     else
       redirect to '/login'
     end
@@ -22,7 +22,8 @@ class TodoController < ApplicationController
 
    get '/todos/:id' do
      @todo = Todo.find_by_id(params[:id])
-     erb :'/todos/list'
+
+     erb :'/todos/show'
    end
 
    get '/todos/:id/edit' do
@@ -32,10 +33,10 @@ class TodoController < ApplicationController
 
    patch '/todos/:id' do
      @todo = Todo.find_by_id(params[:id])
-     @todo.name = params[:name]
+     # @todo.name = params[:name]
      @todo.content = params[:content]
      @todo.save
-     erb :'/todos/list'
+     erb :'/todos/show'
    end
 
    delete '/todos/:id/delete' do

@@ -9,9 +9,9 @@
     <nav>
       <% if logged_in? %>
 
-        <a href="/todos/new"> Create Something ToDo </a>
+        
         <a href="/logout"> Log Out </a>
-         <p>Welcome!</p>
+         <p>Welcome, <%= current_user%></p>
         <a href="/signup">Sign Up</a>
         <a href="/login"> Sign In </a>
       <%end %>
