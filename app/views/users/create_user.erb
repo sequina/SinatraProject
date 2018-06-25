@@ -1,5 +1,5 @@
 <h3>Sign Up Below</h3>
-<h2>Users</h2>
+
 
 <% unless locals.empty? %>
   <%= message %>
@@ -10,17 +10,12 @@
   <div class="form-group">
 
     <div class="form-group">
-      <label for="name">Name: </label>
+      <label for="name" name="username">Name: </label>
       <input type="text" placeholder="John Doe">
     </div>
 
-    <div>
-    <label for="username">Username: </label>
-    <input type="text" placeholder="JDoe01">
-  </div>
-
   <div class="form-group">
-    <label for="email">Email: </label>
+    <label for="email" name="email">Email: </label>
     <input type="text" name="email" placeholder="example@123.com">
   </div>
 
