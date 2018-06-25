@@ -6,9 +6,9 @@ end
 
 use Rack::MethodOverride
 use ApplicationController
-use TodoController
+use UsersController
 
-run UsersController
+run TodoController
 
 
 # Restful routing - Routing conventions

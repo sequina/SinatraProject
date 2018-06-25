@@ -1,6 +1,10 @@
-<p> Here are your ToDos Listed Below!
-<% current_user.todos.each do |todo| %>
-  <div>
-    <%= todo.content %>
-  </div>
-<% end %>
+<p> Here are your ToDos Listed Below! </p>
+
+    <p><%= @todo.content %>
+
+<form method="post" action="/todos/<%=@todo.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Todo">
+</form>
+
+<a href="/todos/<%=@todo.id%>/edit">Edit Todo </a>
