@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
-    # binding.pry
     erb :'users/show'
   end
 
@@ -10,7 +9,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/create_user', locals: {message: "Please sign up before you sign in"}
     else
-      redirect to '/todos'
+      redirect to '/todos/create'
     end
   end
 
@@ -20,16 +19,18 @@ class UsersController < ApplicationController
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
+      # binding.pry
       session[:user_id] = @user.id
       redirect to '/todos'
     end
   end
 
+
   get '/login' do
     if !logged_in?
       erb :'users/login'
     else
-      redirect '/todos'
+      redirect '/users/show'
     end
   end
 
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
     if logged_in?
-      @current_user = nil
+      # @current_user = nil
       session.destroy
       redirect to '/login'
     else

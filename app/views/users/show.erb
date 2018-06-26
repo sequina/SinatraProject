@@ -1,6 +1,7 @@
-<p> Here are your ToDos Listed Below!, <%= current_user %>
+<p> Here are your ToDos Listed Below!, <%= current_user.username %>
+
 <% @user.todo.each do |todo| %>
   <div>
-    <%= todo.content %>
+    <%= @todo.content %>
   </div>
 <% end %>
