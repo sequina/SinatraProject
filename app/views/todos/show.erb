@@ -4,7 +4,9 @@
 
 <form method="post" action="/todos/<%=@todo.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Todo">
+  <input class="btn btn-primary" type="submit" value="Delete Todo">
 </form>
+</br>
+<input class="btn btn-primary" href="/todos/<%=@todo.id%>/edit"value="Edit Todo">
 
-<a href="/todos/<%=@todo.id%>/edit">Edit Todo </a>
+<input class="btn btn-primary" type="button" href="/users/<%=current_user.slug %>" value="See My ToDos">

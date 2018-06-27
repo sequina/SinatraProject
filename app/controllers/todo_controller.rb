@@ -1,9 +1,5 @@
 require_relative '../../config/environment'
 class TodoController < ApplicationController
-  # def params
-  #   params.require(:todo).permit(:title, :content, :user_id)
-  # end
-
 
   get '/todos' do
     if logged_in?
@@ -40,7 +36,6 @@ class TodoController < ApplicationController
     if logged_in?
     @todo = Todo.find_by_id(params[:id])
     erb :'/todos/show'
-    # binding.pry
   else
     redirect to '/login'
   end
@@ -79,12 +74,11 @@ end
      end
    end
 
-
    delete '/todos/:id/delete' do
      if logged_in?
        @todo = Todo.find_by_id(params[:id])
         if @todo && @todo.user == current_user
-          @todo.delete
+          @todo.destroy
         end
         redirect to '/todos'
         else

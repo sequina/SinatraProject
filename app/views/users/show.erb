@@ -1,7 +1,14 @@
-<p> Here are your ToDos Listed Below!, <%= current_user.username %>
+<p> Here are your ToDos Listed Below, <%= current_user.username %>
 
-<% @user.todo.each do |todo| %>
+<% current_user.todos.each do |todo| %>
+<form method="post" action="/users/<%= current_user.slug %>/<%= todo.id%>/delete">
+
   <div>
-    <%= @todo.content %>
-  </div>
-<% end %>
+
+    <%= todo.id %> <%= todo.content %>
+      <input class="btn btn-primary" id="hidden" type="hidden" name="_method" value="DELETE">
+      <input class="btn btn-primary" type="submit" value="Delete Todo">
+
+    </div>
+  <% end %>
+</form>

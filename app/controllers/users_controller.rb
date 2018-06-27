@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
-      # binding.pry
       session[:user_id] = @user.id
       redirect to '/todos'
     end
@@ -53,4 +52,17 @@ class UsersController < ApplicationController
       redirect to '/'
     end
   end
-end
+
+  delete '/users/:slug/:id/delete' do
+    if logged_in?
+      @todo = Todo.find_by_id(params[:id])
+        # validates_uniqueness_of @todo.content
+       if @todo && @todo.user == current_user
+         @todo.destroy
+       end
+       redirect to '/todos'
+       else
+         redirect to '/login'
+       end
+     end
+   end
