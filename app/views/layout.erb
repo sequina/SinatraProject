@@ -8,16 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
   <body>
-    <% if logged_in? %>
-    <p>Welcome, <%= current_user.username %></p>
-    <% end %>
-    <nav class="nav nav-pills nav-fill">
-      <a class="nav-link active" href="/logout">Logout</a>
-      <a class="nav-link" href="/todos">CreateTodo</a>
-      <a class="nav-link" href="/users/<%=current_user.slug %>">See My ToDos</a>
-      <!-- <a class="nav-link disabled" href="#">Disabled</a> -->
-
-    </nav>
     <div class="container">
 
       <%= yield %>

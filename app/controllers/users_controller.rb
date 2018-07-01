@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/login'
     else
-      redirect '/users/show'
+      redirect '/logout'
     end
   end
 
@@ -44,19 +44,14 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if logged_in?
-      # @current_user = nil
+      @current_user = nil
       session.destroy
       redirect to '/login'
-    else
-      redirect to '/'
-    end
   end
 
   delete '/users/:slug/:id/delete' do
     if logged_in?
       @todo = Todo.find_by_id(params[:id])
-        # validates_uniqueness_of @todo.content
        if @todo && @todo.user == current_user
          @todo.destroy
        end

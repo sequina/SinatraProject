@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :todos
   has_secure_password
+  # validates :email, :format => /@/
 
   def slug
     username.to_s.downcase.gsub(" ","-")
