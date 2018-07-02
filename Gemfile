@@ -11,6 +11,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 # gem "tux"
+gem 'validate_email', '~> 0.1.6'
 
 group :test do
   gem 'rspec'

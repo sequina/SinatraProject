@@ -1,7 +1,9 @@
+
 class User < ActiveRecord::Base
   has_many :todos
   has_secure_password
-  # validates :email, :format => /@/
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i,
+   message: "email must be valid" }
 
   def slug
     username.to_s.downcase.gsub(" ","-")

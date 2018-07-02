@@ -4,7 +4,6 @@ class TodoController < ApplicationController
   get '/todos' do
     if logged_in?
      @todo = Todo.all
-     # binding.pry
      erb :'todos/show'
    else
      redirect to '/login'
