@@ -1,4 +1,5 @@
 <p> Here are your ToDos Listed Below, <%= current_user.username %>
+  <a class="btn btn-primary" href="/logout">Logout</a>
 
 <% current_user.todos.each do |todo| %>
 <form method="post" action="/users/<%= current_user.slug %>/<%= todo.id%>/delete">
@@ -13,4 +14,7 @@
       <a class="btn btn-primary" href="/todos/<%=todo.id%>/edit">Edit Todo</a>
     </div>
   <% end %>
+  <div>
+    <a class="btn btn-primary" href="/todos/new">Create Todo</a>
+  </div>
 </form>
